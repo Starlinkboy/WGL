@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Love Calculator</title>
+    <style>
+      body {
+  background-color: pink;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: white;
+}
+
+form {
+  background-color: white;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+input[type="text"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+input[type="submit"] {
+  display: block;
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+input[type="submit"]:hover {
+  background-color: #666;
+}
+
+.result {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.result p {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.result strong {
+  color: red;
+}
+
+.button {
+  display: block;
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  text-align: center;
+  margin: 0 auto;
+  width: 200px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #666;
+}
+
+
+    </style>
+  </head>
+  <body class="pink">
+    <h1>Love Calculator</h1>
+    <div class="result">
+      <p>Love percentage is <strong><%= per %>%</strong></p>
+    </div>
+    <a href="/" class="button">Calculate Again</a>
+  </body>
+</html>

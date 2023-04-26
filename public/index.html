@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Love Calculator</title>
+    
+  
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 50px;
+}
+
+form {
+  margin-top: 50px;
+  text-align: center;
+}
+
+label {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+input[type="text"] {
+  font-size: 20px;
+  padding: 5px;
+}
+
+input[type="submit"] {
+  font-size: 20px;
+  padding: 5px 20px;
+  background-color: #fff;
+  border: 2px solid #000;
+  color: #000;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.red {
+  background-color: #ff6666;
+}
+
+.pink {
+  background-color: #ffb3b3;
+}
+
+.purple {
+  background-color: #bf80ff;
+}
+
+.white {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Additional styles for responsive design */
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 32px;
+  }
+
+  label {
+    font-size: 16px;
+  }
+
+  input[type="text"] {
+    font-size: 16px;
+    padding: 3px;
+  }
+
+  input[type="submit"] {
+    font-size: 16px;
+    padding: 3px 10px;
+  }
+}
+
+/* Styles for error message */
+.error {
+  color: red;
+  display: none;
+}
+</style>
+  </head>
+  <body class="red">
+    <h1>Love Calculator</h1>
+    <form method="POST" action="/love" onsubmit="return validateForm()">
+      <label for="name1">Enter your name:</label>
+      <input type="text" name="name1" id="name1" required><br>
+      <label for="name2">Enter your lover's/crush's name:</label>
+      <input type="text" name="name2" id="name2" required><br>
+      <input type="submit" value="Calculate">
+      <span class="error" id="errorMsg">Please fill in all fields</span>
+    </form>
+    
+    <script>
+      function validateForm() {
+        const name1 = document.getElementById("name1").value;
+        const name2 = document.getElementById("name2").value;
+        const errorMsg = document.getElementById("errorMsg");
+        
+        if (name1 == "" || name2 == "") {
+          errorMsg.style.display = "block";
+          return false;
+        }
+      }
+    </script>
+  </body>
+</html>
