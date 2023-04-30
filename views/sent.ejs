@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>WGL - Anonymous messaging</title>
+    
+    <style>
+      /* Styles for navbar */
+      nav {
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+      
+      nav ul {
+        display: flex;
+        justify-content: space-between;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      
+      nav li {
+        margin-right: 50px;
+      }
+      
+      nav a {
+        color: #000;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 18px;
+      }
+      
+      nav a:hover {
+        color: #bf80ff;
+      }
+      
+      /* Rest of existing styles */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 80px 0 0 0;
+        padding: 0;
+      }
+      .button {
+  display: block;
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  text-align: center;
+  margin: 0 auto;
+  width: 200px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #666;
+}
+      h1 {
+        text-align: center;
+        margin-top: 50px;
+      }
+      
+      p {
+        font-size: 20px;
+        line-height: 1.5;
+        margin: 30px auto;
+        max-width: 600px;
+        padding: 0 20px;
+        text-align: justify;
+      }
+      .red {
+        background-color: #ff6666;
+      }
+      .pink {
+        background-color: #ffb3b3;
+      }
+      
+      .purple {
+        background-color: #bf80ff;
+      }
+      
+      .white {
+        background-color: #fff;
+        color: #000;
+      }
+      
+      /* Additional styles for responsive design */
+      @media (max-width: 600px) {
+        h1 {
+          font-size: 32px;
+        }
+      
+        p {
+          font-size: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body class="purple">
+    <nav>
+      <ul>
+        <li><a href="/"><strong>WGL</strong></a></li>
+       <li><a href="/about">About Us</a></li>
+        
+        
+        
+      </ul>
+    </nav>
+    <h1>Sent message to <%= short %></h1>
+    
+  <br><a href="/" class="button">Back to WGL</a>
+  </body>
+  
+</html>

@@ -2,98 +2,207 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Love Calculator</title>
+    <title>WGL - Anonymous messaging</title>
     
-  
-  <style>
-    body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-h1 {
+    <style>
+      /* Styles for navbar */
+      nav {
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+      
+      nav ul {
+        display: flex;
+        justify-content: space-between;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      
+      nav li {
+        margin-right: 50px;
+        
+      }
+      
+      nav a {
+        color: #000;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 18px;
+      }
+      .button {
+  display: block;
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
   text-align: center;
-  margin-top: 50px;
-}
-
-form {
-  margin-top: 50px;
-  text-align: center;
-}
-
-label {
-  font-size: 20px;
-  margin-right: 10px;
-}
-
-input[type="text"] {
-  font-size: 20px;
-  padding: 5px;
-}
-
-input[type="submit"] {
-  font-size: 20px;
-  padding: 5px 20px;
-  background-color: #fff;
-  border: 2px solid #000;
-  color: #000;
+  margin: 0 auto;
+  width: 200px;
   cursor: pointer;
-  margin-top: 20px;
 }
 
-.red {
-  background-color: #ff6666;
+.button:hover {
+  background-color: #666;
 }
-
-.pink {
-  background-color: #ffb3b3;
-}
-
-.purple {
-  background-color: #bf80ff;
-}
-
-.white {
-  background-color: #fff;
-  color: #000;
-}
-
-/* Additional styles for responsive design */
-
-@media (max-width: 600px) {
-  h1 {
+      nav a:hover {
+        color: #bf80ff;
+      }
+      
+      /* Rest of existing styles */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 80px 0 0 0;
+        padding: 0;
+      }
+      
+      h1 {
+        text-align: center;
+        margin-top: 50px;
+      }
+      
+      form {
+        margin-top: 50px;
+        text-align: center;
+      }
+      p {
+        margin-top: 50px;
+        text-align: center;
+      }
+      
+      label {
+        font-size: 20px;
+        margin-right: 10px;
+      }
+      
+      input[type="text"] {
+        font-size: 20px;
+        padding: 5px;
+      }
+      
+      input[type="submit"] {
+        font-size: 20px;
+        padding: 5px 20px;
+        background-color: #fff;
+        border: 2px solid #000;
+        color: #000;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+      
+      .red {
+        background-color: #ff6666;
+      }
+      
+      .pink {
+        background-color: #ffb3b3;
+      }
+      
+      .purple {
+        background-color: #bf80ff;
+      }
+      
+      .white {
+        background-color: #fff;
+        color: #000;
+      }
+      .error {
+        color: red;
+        display: none;
+      }
+      
+    /* Styles for mobile devices */
+@media only screen and (max-width: 767px) {
+  nav {
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+      
+      nav ul {
+        display: flex;
+        justify-content: space-between;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      
+      nav li {
+        margin-right: 50px;
+        
+      }
+      
+      nav a {
+        color: #000;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 32px;
+      }
+      
+      nav a:hover {
+        color: #bf80ff;
+      }
+      
+  body {
     font-size: 32px;
+  }
+  
+  h1 {
+    font-size: 48px;
   }
 
   label {
-    font-size: 16px;
+    font-size: 32px;
   }
 
   input[type="text"] {
-    font-size: 16px;
+    font-size: 32px;
     padding: 3px;
   }
 
   input[type="submit"] {
-    font-size: 16px;
+    font-size: 32px;
     padding: 3px 10px;
+  }
+
+  .error {
+    color: red;
+    display: block;
+    margin-top: 10px;
   }
 }
 
-/* Styles for error message */
-.error {
-  color: red;
-  display: none;
-}
-</style>
+      
+      
+      
+    </style>
   </head>
   <body class="red">
-    <h1>Love Calculator</h1>
-    <form method="POST" action="/love" onsubmit="return validateForm()">
+    <nav>
+      <ul>
+        <li><a href="/"><strong>WGL</strong></a></li>
+        <li><a href="/about">About Us</a></li>
+       
+        
+        
+      </ul>
+    </nav>
+    <h1>WGL</h1>
+   <!-- <form method="POST" action="/love" onsubmit="return validateForm()">
       <label for="name1">Enter your name:</label>
       <input type="text" name="name1" id="name1" required><br>
-      <label for="name2">Enter your lover's/crush's name:</label>
+      <label for="name2">Enter your lover's / crush's name:</label>
       <input type="text" name="name2" id="name2" required><br>
       <input type="submit" value="Calculate">
       <span class="error" id="errorMsg">Please fill in all fields</span>
@@ -110,6 +219,9 @@ input[type="submit"] {
           return false;
         }
       }
-    </script>
+    </script>-->
+    <p> Welcome to WGL </p>
+    <a href="/signup" class="button">Sign Up</a><br>
+    <a href="/signin" class="button">View Messages</a>
   </body>
 </html>
