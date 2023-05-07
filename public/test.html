@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HTML to Image Download Example</title>
+  <style>
+    #mydiv {
+      background-color: #00FFFF;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="mydiv-1">
+  <h1>My Heading</h1>
+  <p>My paragraph.</p>
+</div>
+  <button onclick="downloadImage('1')" class="button">Download Image</button>
+  <div id="mydiv-2">
+  <h1>My Heading</h1>
+  <p>My paragraph.</p>
+</div>
+  <button onclick="downloadImage('2')" class="button">Download Image</button>
+  <div id="mydiv-3">
+  <h1>My Heading</h1>
+  <p>My paragraph.</p>
+</div>
+  <button onclick="downloadImage('3')" class="button">Download Image</button>
+
+
+
+
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+<script>
+  function downloadImage(text) {
+  html2canvas(document.querySelector(`#mydiv-${text}`)).then(function(canvas) {
+    var link = document.createElement("a");
+    document.body.appendChild(link);
+    link.download = "WGL_image.png";
+    link.href = canvas.toDataURL();
+    link.click();
+    document.body.removeChild(link);
+  });
+}
+
+</script>
+
+</body>
+</html>

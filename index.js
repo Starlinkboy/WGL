@@ -5,8 +5,8 @@ const db = new QuickDB()
 const bodyParser = require('body-parser');
 const path = require("path")
 const fs = require("fs")
-//const favicon = require('serve-favicon');
-//app.use(favicon(path.join(__dirname,'love.ico')))
+const favicon = require('serve-favicon');
+app.use(favicon(path.join(__dirname,'wgl.ico')))
 
  
 
@@ -32,6 +32,10 @@ app.get('/signin', (req, res) => {
 app.get('/noexist', (req, res) => {
   res.sendFile(__dirname + '/public/noexist.html');
 });
+app.get('/test', (req, res) => {
+  res.sendFile(__dirname + '/public/test.html');
+});
+
 
 
 
@@ -53,13 +57,14 @@ app.post('/submitext/:value', async (req, res) => {
   await db.push(`${short}.messages`, name1)
   res.render('sent', {short})
 });
+
 app.post('/signup', async (req, res) => {
   const { name1, name2 } = req.body;
   let message;
   const user = await db.get(`${name1}`)
   if(user==null){
     await db.set(`${name1}.password`, name2)
-    message = "Account created!"
+    message = `Account created!\nYour Link is: <a href="https://wgl.starlinkboy.repl.co/${name1}">https://wgl.starlinkboy.repl.co/${name1}</a>`
   } else {
     message= "Account exists!"
   }
@@ -95,17 +100,7 @@ app.post('/dash', async (req, res) => {
   } else {
     const pass = await db.get(`${name1}.password`);
     if (pass == name2) {
-      /*message = "Logging in...";
-      const filePath = path.join(__dirname, '/public/signin.html');
-      fs.readFile(filePath, 'utf8', (err, data) => {
-        if (err) {
-          console.error(err);
-          return res.status(500).send('Error reading file');
-        }
-        const updatedData = data.replace('<div id="output"></div>', `<div id="output">${message}</div>`);
-        res.send(updatedData);
-      });
-      */
+      
       const filePath = path.join(__dirname, '/public/dash.html');
       fs.readFile(filePath, 'utf8', async (err, data) => {
         if (err) {
@@ -117,12 +112,17 @@ app.post('/dash', async (req, res) => {
 
       const mes = await db.get(`${name1}.messages`);
       mes.forEach(messag => { 
+        if(!message){
+          finalmessage = `<h2>No messages received for ${name1}!</h2>`
+        }
         
-      finalmessage= finalmessage+`<br><div class="message">${messag}</div>`                         })
+      finalmessage= finalmessage+`<br><div class="message" id="mydiv-${messag}"><h2 class="header">Send me anonymous messages!</h2><br><p>${messag}</p></div><br><button onclick="downloadImage('${messag}')" class = "button">Download Image</button>`                         })
+        finalmessage=`<button onclick="copyLink('${name1}')" class = "button">Copy Link</button>`+finalmessage;
       
      const updatedData = data.replace('<!--finalmessage-->', `${finalmessage}`);
         
-      console.log(finalmessage)
+        
+      
       setTimeout(() => {
         res.send(updatedData);
       }, 3000);
@@ -155,7 +155,7 @@ function sanitizeInput(req, res, next) {
   const { body } = req;
   for (const key in body) {
     if (typeof body[key] === 'string') {
-      body[key] = body[key].trim().toLowerCase();
+      body[key] = body[key].trim();
     }
   }
   next();

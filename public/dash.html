@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8">
     <title>WGL - Anonymous messaging</title>
-    
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
     <style>
-      /* Styles for navbar */
+      
       
       nav {
         background-color: #fff;
@@ -36,6 +37,10 @@
         font-weight: bold;
         font-size: 18px;
       }
+      canvas {
+            border: 1px solid black;
+            border-radius: 10px;
+        }
       .button {
   display: block;
   background-color: #333;
@@ -50,17 +55,35 @@
   cursor: pointer;
 }
       .message {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  margin: 0 auto;
-  width: 50%;
-  height: 100px;
-  padding: 20px;
-  background-color: #fff;
-  border: 2px solid black;
-}
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        margin: 0 auto;
+        width: 50%;
+        min-height: 100px;
+        padding: 20px;
+        background-color: #fff;
+        border: 2px solid black;
+      }
+     .message h2 {
+        text-align: center;
+        background-color: black;
+        color: white;
+        padding: 8px;
+        margin: 0;
+        width: 107%;
+        box-sizing: border-box;
+        position: sticky;
+        top: 0;
+      }
+      
+      .message p {
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        font-size: 18px;
+        }
 
 .button:hover {
   background-color: #666;
@@ -69,7 +92,7 @@
         color: #bf80ff;
       }
       
-      /* Rest of existing styles */
+      
       body {
         font-family: Arial, sans-serif;
         margin: 80px 0 0 0;
@@ -136,7 +159,7 @@
         display: none;
       }
       
-    /* Styles for mobile devices */
+    
 @media only screen and (max-width: 767px) {
   nav {
         background-color: #fff;
@@ -218,10 +241,45 @@
     </nav>
     <h1>WGL</h1>
     <h2>Your messages</h2>
+
+
+    <!--finalmessage-->
+   
+     <script>
+       function downloadImage(text) {
+  html2canvas(document.querySelector(`#mydiv-${text}`)).then(function(canvas) {
+    var link = document.createElement("a");
+    document.body.appendChild(link);
+    link.download = "WGL_image.png";
+    link.href = canvas.toDataURL();
+    link.click();
+    document.body.removeChild(link);
+  });
+}
+
+       function copyLink(text) {
+  
+  var url = `https://wgl.starlinkboy.repl.co/${text}`;
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(url)
+      .then(() => {
+        alert(`Copied link: ${url}`);
+      })
+      .catch((err) => {
+        console.error('Failed to copy text: ', err);
+      });
+  } else {
+    console.warn('navigator.clipboard not available');
+  }
+
+
+
+}
+    </script>
    
     
     
-    <!--finalmessage-->
+    
     
     
   </body>
